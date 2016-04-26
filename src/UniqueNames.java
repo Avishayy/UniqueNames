@@ -18,7 +18,7 @@ public class UniqueNames {
         String fBillNameOnCard = billNameOnCard.toLowerCase();
 
         // TAKING CARE OF MIDDLE NAMES STARTS HERE
-        // the whole sections takes out the middle names from the input and puts them at the array below, names are modified obviously so they won't contain any middle names.
+        // the whole section takes out the middle names from the input and puts them at the array below, names are modified so they won't contain any middle names.
         String[] middleNames = {"", "", ""}; // 0 is billing name, 1 is shipping name, 2 is name on card
 
         if (fBillFirstName.contains(" ")) { // in case of a middle name at a first name, it'll begin with the first name
@@ -26,7 +26,7 @@ public class UniqueNames {
             fBillFirstName = names[0];
 
             for (int i = 1; i < names.length; ++i) // perhaps someone will come with a middle name that is "The Legend", so preparing for middle names with more than one word
-                middleNames[0] += names[i] + " ";
+                middleNames[0] += names[i] + " "; // and yes, "TheLegend" is not the same middle nam as "The Legend"
         }
 
         if (fShipFirstName.contains(" ")) {
@@ -69,7 +69,7 @@ public class UniqueNames {
         return count;
     }
 
-    public static boolean equalMiddleNames(String a, String b) {
+    public static boolean equalMiddleNames(String a, String b) { // If no middle name is found, it can be related as an equal to any middle name
         if ((a.equals("") && !b.equals("")) || !a.equals("") && b.equals(""))
             return true;
         return a.equals(b);
@@ -112,9 +112,9 @@ public class UniqueNames {
         return getHammingDistance(a, b) <= 2; // can't be certain, but this is the farthest I'll go for a typo
     }
 
-    public static int getHammingDistance(String a, String b) {
-        char[] A = a.toCharArray();
-        char[] B = b.toCharArray();
+    public static int getHammingDistance(String a, String b) { // calculated the difference of letter changes that needs to be done between two strings
+        char[] A = a.toCharArray();                            // for example -
+        char[] B = b.toCharArray();                            // "bloh" and "gluh" have a distance of 2, since you'll need to change 'b' and 'o' to reach the second string.
 
         int shortestLength = Math.min(a.length(), b.length());
         int longestLength = Math.max(a.length(), b.length());
