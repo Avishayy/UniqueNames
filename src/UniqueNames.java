@@ -17,7 +17,6 @@ public class UniqueNames {
         String fShipLastName = shipLastName.toLowerCase();
         String fBillNameOnCard = billNameOnCard.toLowerCase();
 
-        // TAKING CARE OF MIDDLE NAMES STARTS HERE
         // the whole section takes out the middle names from the input and puts them at the array below, names are modified so they won't contain any middle names.
         String[] middleNames = {"", "", ""}; // 0 is billing name, 1 is shipping name, 2 is name on card
                                              // type - 0 = firstname, 1 = lastname, 2 = fullname
@@ -26,7 +25,6 @@ public class UniqueNames {
         fShipFirstName = updateMiddleNames(fShipFirstName, 0, 1, middleNames);
         fShipLastName = updateMiddleNames(fShipLastName, 1, 1, middleNames);
         fBillNameOnCard = updateMiddleNames(fBillNameOnCard, 2, 2, middleNames);
-        // TAKING CARE OF MIDDLE NAMES ENDS HERE
 
         int count = 1;
         if (!isSameFirstName(fBillFirstName, fShipFirstName) || !isSameLastName(fBillLastName, fShipLastName) || !equalMiddleNames(middleNames[0], middleNames[1]))
